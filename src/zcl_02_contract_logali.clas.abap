@@ -1,14 +1,17 @@
-class ZCL_02_CONTRACT_LOGALI definition
-  public
-  final
-  create public .
+CLASS zcl_02_contract_logali DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+    CLASS-DATA currency TYPE c LENGTH 3.
+  PROTECTED SECTION.
+    DATA creation_date TYPE sydate.
+  PRIVATE SECTION.
+    DATA client TYPE string.
 ENDCLASS.
 
 
 
-CLASS ZCL_02_CONTRACT_LOGALI IMPLEMENTATION.
+CLASS zcl_02_contract_logali IMPLEMENTATION.
 ENDCLASS.
