@@ -58,15 +58,20 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
       "Setting instance variables
       lo_contract->region = 'EU'.
 
-      zcl_02_contract_logali=>set_cntr_type( iv_cntr_typr = 'Construction' ).
+      DATA(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
 
-      zcl_02_contract_logali=>get_cntr_typr(
-        IMPORTING
-          ev_cntr_typr = DATA(lv_cntr_type)
-      ).
-
+      IF NOT lv_client_name IS INITIAL.
+        out->write( lv_client_name ).
+      ENDIF.
 
     ENDIF.
+
+    zcl_02_contract_logali=>set_cntr_type( iv_cntr_typr = 'Construction' ).
+
+    zcl_02_contract_logali=>get_cntr_typr(
+      IMPORTING
+        ev_cntr_typr = DATA(lv_cntr_type)
+    ).
 
     zcl_02_contract_logali=>currency = 'USD'.
 
