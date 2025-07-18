@@ -21,6 +21,7 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
 *    lo_contract = NEW #( ).
 
     DATA(lo_contract) = NEW zcl_02_contract_logali(  ).
+    DATA(lo_contract2) = NEW zcl_02_contract_logali(  ).
 
     DATA lv_process TYPE string.
 
@@ -57,11 +58,24 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
       "Setting instance variables
       lo_contract->region = 'EU'.
 
+      zcl_02_contract_logali=>set_cntr_type( iv_cntr_typr = 'Construction' ).
+
+      zcl_02_contract_logali=>get_cntr_typr(
+        IMPORTING
+          ev_cntr_typr = DATA(lv_cntr_type)
+      ).
 
 
     ENDIF.
 
+    zcl_02_contract_logali=>currency = 'USD'.
+
+    out->write( lo_contract->currency ).
+    out->write( lo_contract2->currency ).
+
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region }| ).
+
+    out->write( lv_cntr_type ).
 *    out->write( 'Hello World' ).
   ENDMETHOD.
 ENDCLASS.
