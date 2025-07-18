@@ -70,8 +70,11 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
 
     zcl_02_contract_logali=>currency = 'USD'.
 
-    out->write( lo_contract->currency ).
-    out->write( lo_contract2->currency ).
+    "Example to show that instance objects share the same value for static methods or variables across all instances.
+*    out->write( lo_contract->currency ).
+*    out->write( lo_contract2->currency ).
+
+    out->write( zcl_02_contract_logali=>currency ).
 
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region }| ).
 
