@@ -25,6 +25,9 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
 
     DATA lv_process TYPE string.
 
+    DATA lt_address TYPE zcl_02_contract_logali=>tty_address.
+    DATA ls_address TYPE zcl_02_contract_logali=>ty_address.
+
     "We check if the object instance was created
     IF lo_contract IS BOUND.
 
@@ -58,6 +61,7 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
       "Setting instance variables
       lo_contract->region = 'EU'.
 
+      "Call functional method
       DATA(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
 
       IF NOT lv_client_name IS INITIAL.
