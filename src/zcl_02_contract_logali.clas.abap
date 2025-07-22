@@ -15,6 +15,13 @@ CLASS zcl_02_contract_logali DEFINITION
            END OF ty_address,
            tty_address TYPE TABLE OF ty_address.
 
+    CONSTANTS: BEGIN OF cs_currency,
+                 usd TYPE c LENGTH 3 VALUE 'USD',
+                 eur TYPE c LENGTH 3 VALUE 'EUR',
+               END OF cs_currency.
+
+*    CONSTANTS cv_currency_usd TYPE string VALUE 'USD'.
+
     "Reserved word to declare static variables.
     CLASS-DATA currency TYPE c LENGTH 3.
 

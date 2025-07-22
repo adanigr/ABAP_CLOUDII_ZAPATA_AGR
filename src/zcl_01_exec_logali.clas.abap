@@ -77,7 +77,9 @@ CLASS zcl_01_exec_logali IMPLEMENTATION.
         ev_cntr_typr = DATA(lv_cntr_type)
     ).
 
-    zcl_02_contract_logali=>currency = 'USD'.
+*    zcl_02_contract_logali=>currency = 'USD'.
+
+    zcl_02_contract_logali=>currency = zcl_02_contract_logali=>cs_currency-usd.
 
     "Example to show that instance objects share the same value for static methods or variables across all instances.
 *    out->write( lo_contract->currency ).
